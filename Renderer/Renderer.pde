@@ -38,9 +38,9 @@ void draw() {
   //camera(player.px, player.py, player.pz, player.px+map(mouseX, -width/2, width, 0, 50000), player.py+angleY, player.pz+ map(mouseY-height, 0, height, 0, 50000)/2/tan(PI/6), 0, 1, 0);
   camera(player.px, player.py, player.pz, 
   
-  player.px, 
-  player.py+1, 
-  player.pz-2, 
+  player.px+player.vue.x, 
+  player.py+player.vue.y, 
+  player.pz+player.vue.z, 
   
   0, 1, 0);
 
@@ -100,5 +100,12 @@ void keyPressed() {
 
 void mouseWheel(MouseEvent event) {
   player.py += 50*event.getCount();
-  
+ 
+}
+
+
+void mouseDragged() {
+  float rate = 0.01;
+  player.rotateX((mouseY-pmouseY) * rate);
+  player.rotateY((mouseX-pmouseX) * rate);
 }
