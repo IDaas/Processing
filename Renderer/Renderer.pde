@@ -8,7 +8,7 @@ float eyeY, eyeX, eyeZ, angleX, angleY, angleZ;
 
 
 void setup() {
-  size(800, 800, P3D);
+  size(800,800,P3D);
   cubes = new Cube[100][100];
   lights();
   img = loadImage("dirt4.jpg");
@@ -21,13 +21,13 @@ void setup() {
   angleX = width/2.0;
   angleY=  height/2.0;
   angleZ=  0;
-  System.out.println(angleX+" "+angleY+" "+angleZ+" ");
+ 
 
   //generate
   int i, j;
   for (i=0; i<100; i++) {
     for (j=0; j<100; j++) {
-      cubes[i][j]= new Cube(i, 0+random(1), -j, img);
+      cubes[i][j]= new Cube(i, 0+random(50), -j, img);
     }
   }
 }
@@ -69,26 +69,28 @@ void keyPressed() {
 
 
 
-  int i, j;
-  for (i=0; i<100; i++) {
-    for (j=0; j<100; j++) {
+
       if (key == CODED) {
         if (keyCode == DOWN) {
-          player.pz+=0.01;
+          player.pz -= player.vue.z*50;
+          player.py -= player.vue.y*50;
+          player.px -= player.vue.x*50;
+        }
+         if (keyCode == UP) {
+          player.pz += player.vue.z*50;
+          player.py += player.vue.y*50;
+          player.px += player.vue.x*50;
+          
         }
         if (keyCode == LEFT) {
-          player.px-=0.01;
+          player.px-=50;
         }
-        if (keyCode == UP) {
-          player.pz-=0.01;
-        }
+       
         if (keyCode == RIGHT) {
-          player.px+=0.01;
+          player.px+=50;
         }
       }
-    }
-  }
-
+ 
 
 
 
@@ -105,7 +107,7 @@ void mouseWheel(MouseEvent event) {
 
 
 void mouseDragged() {
-  float rate = 0.01;
+  float rate = 0.001;
   player.rotateX((mouseY-pmouseY) * rate);
   player.rotateY((mouseX-pmouseX) * rate);
 }
