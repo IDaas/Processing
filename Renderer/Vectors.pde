@@ -44,9 +44,9 @@ return matmul(rotate,vec);
 PVector rotateXZ(PVector vec ,float a){
   float[][] rotate = 
   {
-    {cos(a),0,-sin(a)},
-    {0,1,0},
-    {sin(a),0,cos(a)}
+    {cos(a),0   ,sin(a)},
+    {0     ,1   ,0},
+    {-sin(a),0  ,cos(a)}
   };
 return matmul(rotate,vec);
 }

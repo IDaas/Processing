@@ -7,12 +7,18 @@ PVector vue;
   px=x;
   py=y;
   pz=z;
-  vue = new PVector(0,1,-2);
+  vue = new PVector(0,0.1,1);
   }
+  void rotateY(float angle){vue = rotateXZ(vue,angle);
+
+}
+  void rotateX(float angle){ vue = rotateYZ(vue,angle);
+}
   
-  void rotateX(float angle){vue = rotateYZ(vue,angle);};
-  void rotateY(float angle){vue = rotateXZ(vue,angle);};
-  void rotateZ(float angle){vue = rotateXY(vue,angle);};
+  void rotateZ(float angle){vue = rotateXY(vue,angle);
+
+}
+  
   
 
 
